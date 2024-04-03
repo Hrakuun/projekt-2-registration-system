@@ -34,4 +34,7 @@ public class DatabaseHandler {
         return usersAsList;
     }
 
+    public void updateUser(User user) {
+        database.update("UPDATE users SET name = ?, surname = ? where id = ?", user.getName(),user.getSurname(),user.getId());
+    }
 }

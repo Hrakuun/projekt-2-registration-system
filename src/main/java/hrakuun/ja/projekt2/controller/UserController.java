@@ -36,5 +36,10 @@ public class UserController {
         return userHandler.getUsers(detail);
     }
 
+    @PutMapping("user")
+    public ResponseEntity<HttpStatus> updateUser(@RequestBody User user){
+        return userHandler.updateUser(user);
+    }
+
 
 }
