@@ -17,6 +17,13 @@ public class UserController {
     public ResponseEntity<HttpStatus> createUser(@RequestBody User user) {
         return userHandler.createUser(user);
     }
+    @GetMapping("user/{id}")
+    public User getUserById(
+            @PathVariable(value = "id") String id,
+            @RequestParam(name = "detail", required = false, defaultValue = "false") boolean detail
+            ){
+        return userHandler.getUserById(id);
+    }
 
 
 }

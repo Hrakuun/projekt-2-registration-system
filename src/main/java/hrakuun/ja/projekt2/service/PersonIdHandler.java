@@ -44,6 +44,10 @@ public class PersonIdHandler {
         }
         return null;
     }
+    public boolean isPersonIdValid(String personId){
+        List<String> personIds = getPersonIdsFromFile();
+        return personIds.contains(personId);
+    }
 
 
 

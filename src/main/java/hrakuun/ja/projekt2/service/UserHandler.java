@@ -19,11 +19,17 @@ public class UserHandler {
     public ResponseEntity<HttpStatus> createUser(User user) {
         if(personIdHandler.isPersonIdTaken(user.getPersonId())) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
+        } else if(!personIdHandler.isPersonIdValid(user.getPersonId())) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
         user.setUuid(uuid.generateUuid().toString());
         database.addUser(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
         }
+    }
+
+    public User getUserById(String id){
+        return database.getUserById(id);
     }
 
 
