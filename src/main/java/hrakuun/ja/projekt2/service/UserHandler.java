@@ -28,9 +28,9 @@ public class UserHandler {
         }
     }
 
-    public User getUserById(String id,boolean withUuid){
+    public User getUserById(String id,boolean withDetails){
         User userById = database.getUserById(id);
-        if(withUuid){
+        if(withDetails){
             return userById;
         } else {
             return new User(userById.getId(),userById.getName(),userById.getSurname());
