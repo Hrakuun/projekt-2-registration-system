@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 @Repository
 public class DatabaseHandler {
@@ -26,7 +27,11 @@ public class DatabaseHandler {
     public User getUserById(String id){
         String sql = "SELECT * FROM users WHERE personId = ?";
         return database.queryForObject(sql,new UserRowMapper(), id);
-
+    }
+    public List<User> getUsersAsList(){
+        String sql = "SELECT * FROM users";
+        List<User> usersAsList = database.query(sql,new UserRowMapper());
+        return usersAsList;
     }
 
 }

@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserHandler {
     @Autowired
@@ -17,24 +20,35 @@ public class UserHandler {
     DatabaseHandler database;
 
     public ResponseEntity<HttpStatus> createUser(User user) {
-        if(personIdHandler.isPersonIdTaken(user.getPersonId())) {
+        if (personIdHandler.isPersonIdTaken(user.getPersonId())) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
-        } else if(!personIdHandler.isPersonIdValid(user.getPersonId())) {
+        } else if (!personIdHandler.isPersonIdValid(user.getPersonId())) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         } else {
-        user.setUuid(uuid.generateUuid().toString());
-        database.addUser(user);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+            user.setUuid(uuid.generateUuid().toString());
+            database.addUser(user);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         }
     }
 
-    public User getUserById(String id,boolean withDetails){
+    public User getUserById(String id, boolean withDetails) {
         User userById = database.getUserById(id);
-        if(withDetails){
+        if (withDetails) {
             return userById;
         } else {
-            return new User(userById.getId(),userById.getName(),userById.getSurname());
+            return new User(userById.getId(), userById.getName(), userById.getSurname());
         }
+    }
+
+    public List<User> getUsers(boolean withDetails) {
+        List<User> usersAsList = database.getUsersAsList();
+        if (!withDetails) {
+            for (User user : usersAsList) {
+                user.setPersonId(null);
+                user.setUuid(null);
+            }
+        }
+        return usersAsList;
     }
 
 
