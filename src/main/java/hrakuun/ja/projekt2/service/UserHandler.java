@@ -54,4 +54,9 @@ public class UserHandler {
         database.updateUser(user);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
+
+    public ResponseEntity<HttpStatus> deleteUser(String id) {
+        database.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.GONE);
+    }
 }

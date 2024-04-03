@@ -25,7 +25,7 @@ public class DatabaseHandler {
     }
 
     public User getUserById(String id){
-        String sql = "SELECT * FROM users WHERE personId = ?";
+        String sql = "SELECT * FROM users WHERE id = ?";
         return database.queryForObject(sql,new UserRowMapper(), id);
     }
     public List<User> getUsersAsList(){
@@ -36,5 +36,11 @@ public class DatabaseHandler {
 
     public void updateUser(User user) {
         database.update("UPDATE users SET name = ?, surname = ? where id = ?", user.getName(),user.getSurname(),user.getId());
+    }
+
+    public void deleteUser(String id){
+        String sql = "DELETE FROM users WHERE id = ?";
+        database.update(sql,id);
+
     }
 }

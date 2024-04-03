@@ -16,13 +16,6 @@ public class User {
     public User() {
     }
 
-    public User(String name, String surname, String personId, String uuid) {
-        this.name = name;
-        this.surname = surname;
-        this.personId = personId;
-        this.uuid = uuid;
-    }
-
     public User(String id, String name, String surname, String personId, String uuid) {
         this.id = id;
         this.name = name;
