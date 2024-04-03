@@ -13,4 +13,10 @@ public class DatabaseHandler {
     public void addUser(User user){
         database.update("INSERT INTO USERS VALUES(?,?,?,?)",user.getPersonId(),user.getName(),user.getSurname(),user.getUuid());
     }
+
+    public Boolean isPersonIdTaken(String personId) {
+        String sql = "SELECT COUNT(*) FROM users WHERE personId = '"+personId+"'";
+        return database.queryForObject(sql, Boolean.class);
+    }
+
 }

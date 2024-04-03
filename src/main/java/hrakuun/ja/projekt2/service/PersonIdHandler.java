@@ -1,5 +1,7 @@
 package hrakuun.ja.projekt2.service;
 
+import hrakuun.ja.projekt2.repository.DatabaseHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -11,6 +13,8 @@ import java.util.Scanner;
 
 @Service
 public class PersonIdHandler {
+    @Autowired
+    DatabaseHandler database;
     String filePath = "dataFiles/dataPersonId.txt";
 
     private List<String> getPersonIdsFromFile() {
@@ -23,18 +27,18 @@ public class PersonIdHandler {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+        System.out.println(personIds);
         return personIds;
     }
 
-    public boolean isPersonIdFree(String personId){
-        List<String> personIds = getPersonIdsFromFile();
-        return !personIds.contains(personId);
+    public boolean isPersonIdTaken(String personId){
+        return database.isPersonIdTaken(personId);
     }
 
     public String getNewPersonId(){
         List<String> personIds = getPersonIdsFromFile();
         for(String personId : personIds){
-            if(isPersonIdFree(personId)){
+            if(!isPersonIdTaken(personId)){
                 return personId;
             }
         }
