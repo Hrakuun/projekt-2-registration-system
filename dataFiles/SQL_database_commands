@@ -2,12 +2,15 @@ CREATE DATABASE `GenesisResources` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLAT
 
 -- GenesisResources.Users definition
 
-CREATE TABLE GenesisResources.Users (
-	PersonID varchar(100) NOT NULL,
-	Name varchar(100) NOT NULL,
-	Surname varchar(100) NOT NULL,
-	Uuid varchar(100) NOT NULL,
-	CONSTRAINT Users_pk PRIMARY KEY (PersonID)
+CREATE TABLE genesisresources.users (
+	id INT auto_increment NOT NULL,
+	name varchar(100) NOT NULL,
+	surname varchar(100) NULL,
+	personid varchar(100) NOT NULL,
+	uuid varchar(100) NOT NULL,
+	CONSTRAINT users_pk PRIMARY KEY (id),
+	CONSTRAINT users_unique UNIQUE KEY (personid),
+	CONSTRAINT users_unique_1 UNIQUE KEY (uuid)
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
