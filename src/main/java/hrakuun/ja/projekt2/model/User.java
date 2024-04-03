@@ -7,13 +7,13 @@ public class User {
     private String name;
     private String surname;
     @Size(min = 12, max = 12)
-    private String personID;
+    private String personId;
     private String uuid;
 
-    public User(String name, String surname, String personID, String uuid) {
+    public User(String name, String surname, String personId, String uuid) {
         this.name = name;
         this.surname = surname;
-        this.personID = personID;
+        this.personId = personId;
         this.uuid = uuid;
     }
 
@@ -33,12 +33,12 @@ public class User {
         this.surname = surname;
     }
 
-    public String getPersonID() {
-        return personID;
+    public String getPersonId() {
+        return personId;
     }
 
-    public void setPersonID(String personID) {
-        this.personID = personID;
+    public void setPersonId(String personId) {
+        this.personId = personId;
     }
 
     public String getUuid() {

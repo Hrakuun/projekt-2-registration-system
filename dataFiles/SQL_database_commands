@@ -1,0 +1,15 @@
+CREATE DATABASE `GenesisResources` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+-- GenesisResources.Users definition
+
+CREATE TABLE GenesisResources.Users (
+	PersonID varchar(100) NOT NULL,
+	Name varchar(100) NOT NULL,
+	Surname varchar(100) NOT NULL,
+	Uuid varchar(100) NOT NULL,
+	CONSTRAINT Users_pk PRIMARY KEY (PersonID)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS GenesisResources.Users;
