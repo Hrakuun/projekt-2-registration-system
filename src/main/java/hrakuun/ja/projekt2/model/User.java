@@ -17,6 +17,12 @@ public class User {
         this.uuid = uuid;
     }
 
+    public User(String name, String surname, String personId) {
+        this.name = name;
+        this.surname = surname;
+        this.personId = personId;
+    }
+
     public String getName() {
         return name;
     }

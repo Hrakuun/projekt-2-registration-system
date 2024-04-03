@@ -22,7 +22,7 @@ public class UserController {
             @PathVariable(value = "id") String id,
             @RequestParam(name = "detail", required = false, defaultValue = "false") boolean detail
             ){
-        return userHandler.getUserById(id);
+        return userHandler.getUserById(id,detail);
     }
 
 

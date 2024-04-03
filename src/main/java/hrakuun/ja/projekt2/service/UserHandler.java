@@ -28,8 +28,13 @@ public class UserHandler {
         }
     }
 
-    public User getUserById(String id){
-        return database.getUserById(id);
+    public User getUserById(String id,boolean withUuid){
+        User userById = database.getUserById(id);
+        if(withUuid){
+            return userById;
+        } else {
+            return new User(userById.getName(),userById.getSurname(),userById.getPersonId());
+        }
     }
 
 
