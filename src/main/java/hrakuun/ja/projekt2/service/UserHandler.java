@@ -33,7 +33,7 @@ public class UserHandler {
         if(withUuid){
             return userById;
         } else {
-            return new User(userById.getName(),userById.getSurname(),userById.getPersonId());
+            return new User(userById.getId(),userById.getName(),userById.getSurname());
         }
     }
 

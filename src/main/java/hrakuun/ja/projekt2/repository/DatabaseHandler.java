@@ -15,7 +15,7 @@ public class DatabaseHandler {
     JdbcTemplate database;
 
     public void addUser(User user){
-        database.update("INSERT INTO USERS VALUES(?,?,?,?)",user.getPersonId(),user.getName(),user.getSurname(),user.getUuid());
+        database.update("INSERT INTO users (name,surname,personId,uuid) VALUES(?,?,?,?)",user.getName(),user.getSurname(),user.getPersonId(),user.getUuid());
     }
 
     public Boolean isPersonIdTaken(String personId) {
