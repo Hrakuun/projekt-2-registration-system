@@ -1,7 +1,9 @@
 package hrakuun.ja.projekt2.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.Size;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
 
     private String name;
@@ -9,6 +11,9 @@ public class User {
     @Size(min = 12, max = 12)
     private String personId;
     private String uuid;
+
+    public User() {
+    }
 
     public User(String name, String surname, String personId, String uuid) {
         this.name = name;

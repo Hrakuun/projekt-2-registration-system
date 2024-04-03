@@ -35,15 +35,7 @@ public class PersonIdHandler {
         return database.isPersonIdTaken(personId);
     }
 
-    public String getNewPersonId(){
-        List<String> personIds = getPersonIdsFromFile();
-        for(String personId : personIds){
-            if(!isPersonIdTaken(personId)){
-                return personId;
-            }
-        }
-        return null;
-    }
+
     public boolean isPersonIdValid(String personId){
         List<String> personIds = getPersonIdsFromFile();
         return personIds.contains(personId);
