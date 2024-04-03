@@ -27,7 +27,6 @@ public class PersonIdHandler {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(personIds);
         return personIds;
     }
 
