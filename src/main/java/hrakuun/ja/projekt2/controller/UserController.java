@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @PutMapping("user")
-    public void updateUser(@RequestBody User user) {
+    public void updateUser(@Valid @RequestBody User user) {
         userHandler.updateUser(user);
     }
 
