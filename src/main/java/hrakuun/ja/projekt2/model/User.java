@@ -1,15 +1,17 @@
 package hrakuun.ja.projekt2.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
 
     private String id;
+    @NotBlank(message = "Name is not valid")
     private String name;
     private String surname;
-    @Size(min = 12, max = 12)
+    @Size(min = 12, max = 12,message = "personID must be 12 characters")
     private String personId;
     private String uuid;
 

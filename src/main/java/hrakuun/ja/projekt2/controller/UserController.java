@@ -2,6 +2,7 @@ package hrakuun.ja.projekt2.controller;
 
 import hrakuun.ja.projekt2.model.User;
 import hrakuun.ja.projekt2.service.UserHandler;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class UserController {
     UserHandler userHandler;
 
     @PostMapping("user")
-    public ResponseEntity<HttpStatus> createUser(@RequestBody User user) {
+    public ResponseEntity<HttpStatus> createUser(@Valid @RequestBody User user) {
         return userHandler.createUser(user);
     }
 
