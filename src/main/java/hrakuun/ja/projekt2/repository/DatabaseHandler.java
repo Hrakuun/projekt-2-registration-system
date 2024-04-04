@@ -15,32 +15,33 @@ public class DatabaseHandler {
     @Autowired
     JdbcTemplate database;
 
-    public void addUser(User user){
-        database.update("INSERT INTO users (name,surname,personId,uuid) VALUES(?,?,?,?)",user.getName(),user.getSurname(),user.getPersonId(),user.getUuid());
+    public void addUser(User user) {
+        database.update("INSERT INTO users (name,surname,personId,uuid) VALUES(?,?,?,?)", user.getName(), user.getSurname(), user.getPersonId(), user.getUuid());
     }
 
     public Boolean isPersonIdTaken(String personId) {
-        String sql = "SELECT COUNT(*) FROM users WHERE personId = '"+personId+"'";
+        String sql = "SELECT COUNT(*) FROM users WHERE personId = '" + personId + "'";
         return database.queryForObject(sql, Boolean.class);
     }
 
-    public User getUserById(String id){
+    public User getUserById(String id) {
         String sql = "SELECT * FROM users WHERE id = ?";
-        return database.queryForObject(sql,new UserRowMapper(), id);
+        return database.queryForObject(sql, new UserRowMapper(), id);
     }
-    public List<User> getUsersAsList(){
+
+    public List<User> getUsersAsList() {
         String sql = "SELECT * FROM users";
-        List<User> usersAsList = database.query(sql,new UserRowMapper());
+        List<User> usersAsList = database.query(sql, new UserRowMapper());
         return usersAsList;
     }
 
     public void updateUser(User user) {
-        database.update("UPDATE users SET name = ?, surname = ? where id = ?", user.getName(),user.getSurname(),user.getId());
+        database.update("UPDATE users SET name = ?, surname = ? where id = ?", user.getName(), user.getSurname(), user.getId());
     }
 
-    public void deleteUser(String id){
+    public void deleteUser(String id) {
         String sql = "DELETE FROM users WHERE id = ?";
-        database.update(sql,id);
+        database.update(sql, id);
 
     }
 }

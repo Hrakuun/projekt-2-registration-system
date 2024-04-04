@@ -50,9 +50,8 @@ public class UserHandler {
         return usersAsList;
     }
 
-    public ResponseEntity<HttpStatus> updateUser(User user) {
+    public void updateUser(User user) {
         database.updateUser(user);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
     public ResponseEntity<HttpStatus> deleteUser(String id) {

@@ -24,8 +24,8 @@ public class User {
         this.uuid = uuid;
     }
 
-    public User(String id,String name, String surname){
-        this(id,name,surname,null,null);
+    public User(String id, String name, String surname) {
+        this(id, name, surname, null, null);
     }
 
     public String getId() {

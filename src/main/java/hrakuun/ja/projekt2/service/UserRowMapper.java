@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 @Service
 public class UserRowMapper implements RowMapper<User> {
 
@@ -16,6 +17,6 @@ public class UserRowMapper implements RowMapper<User> {
         String name = rs.getString("name");
         String surname = rs.getString("surname");
         String uuid = rs.getString("uuid");
-        return new User(id,name,surname,personId,uuid);
+        return new User(id, name, surname, personId, uuid);
     }
 }

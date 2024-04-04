@@ -37,15 +37,20 @@ public class UserController {
     }
 
     @PutMapping("user")
-    public ResponseEntity<HttpStatus> updateUser(@RequestBody User user){
-        return userHandler.updateUser(user);
+    public void updateUser(@RequestBody User user) {
+        userHandler.updateUser(user);
     }
 
     @DeleteMapping("user/{id}")
-    public ResponseEntity<HttpStatus> deleteUser(@PathVariable(value = "id") String id){
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable(value = "id") String id) {
         return userHandler.deleteUser(id);
     }
 
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String handleException(Exception e) {
+        return e.getMessage();
+    }
 
 
 }

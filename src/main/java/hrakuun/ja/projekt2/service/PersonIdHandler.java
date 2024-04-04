@@ -24,7 +24,7 @@ public class PersonIdHandler {
                 String line = scanner.nextLine();
                 personIds.add(line);
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | IllegalStateException e) {
             throw new RuntimeException(e);
         }
         return personIds;
